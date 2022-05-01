@@ -29,6 +29,7 @@ body {
   grid-area: 2 / 2 / 3 / 3;
   background-color: #bbf7d0;
   border: 4px dashed #78716c;
+  display: grid;
 }
 
 .image-helper {
@@ -97,14 +98,16 @@ body {
   opacity: 1;
 }
 
-.display {
-  width: 100%;
+.sketch,
+.restaurant,
+.calculator,
+.todolist,
+.library,
+.sign,
+.tictactoe,
+.dashboard,
+.landing {
   height: 100%;
-  opacity: 1;
-  transition: all 500ms ease-in-out;
-}
-
-.display:hover {
-  transform: translateX(200%);
-  opacity: 0;
+  width: 100%;
+  grid-area: 1 / 1 / 2 / 2;
 }
