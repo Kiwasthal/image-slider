@@ -1,25 +1,19 @@
-// let img = document.createElement('img');
-// img.classList.add('todolist');
-// img.src = './assets/todolist.gif';
-// let imgContainer = document.querySelector('.image-container');
-// imgContainer.appendChild(img);
-
 let slideCenter = (element) => {
   setTimeout(() => {
     element.classList.add('slideCenter');
-  }, 400);
+  }, 498);
 };
 
 let slideRight = (element) => {
   setTimeout(() => {
     element.classList.add('slideRight');
-  }, 2);
+  }, 1);
 };
 
 let removeImg = (parent, element) => {
   setTimeout(() => {
     parent.removeChild(element);
-  }, 501);
+  }, 503);
 };
 
 let createNewImage = (item, source, classname) => {
@@ -32,7 +26,10 @@ let createNewImage = (item, source, classname) => {
 
 let imageAnimation = (img, imgContainer, source, classname) => {
   slideRight(img);
-  removeImg(imgContainer, img);
+
+  if (count > 1) removeImg(imgContainer, img);
+  count++;
+
   let newImg = document.createElement('img');
   createNewImage(newImg, source, classname);
   slideCenter(newImg);
@@ -57,6 +54,7 @@ let checkImage = (img) => {
     imageAnimation(img, imgContainer, './assets/todolist.gif', 'todolist');
   }
 };
+let count = 1;
 let imgContainer = document.querySelector('.image-container');
 let img = document.createElement('img');
 imageAnimation(img, imgContainer, './assets/todolist.gif', 'todolist');
