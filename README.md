@@ -10,4 +10,4 @@ This is a simple project, that can easily be incorporated into a bigger design i
 
 <a href="https://kiwasthal.github.io/image-slider/">Take a look.</a>
 
-<img src="screen.png">
+<img src="./assets/screen.png">
