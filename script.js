@@ -2,6 +2,7 @@ let playstatus = true;
 let right = document.getElementById('right');
 let left = document.getElementById('left');
 let btnpress = true;
+let btnstatus = true;
 
 function notPressed() {
   btnpress = true;
@@ -10,10 +11,8 @@ function notPressed() {
 function pressed() {
   btnpress = false;
 
-  let notp = setTimeout(notPressed, 5000);
+  setTimeout(notPressed, 5000);
 }
-
-clearInterval(interval);
 
 right.addEventListener('mouseenter', () => {
   right.style.transform = 'scale(0.9)';
@@ -39,8 +38,8 @@ left.addEventListener('click', () => {
     right.style.filter = 'none';
     left.style.filter = 'none';
   } else {
-    right.style.filter = 'drop-shadow(0px 0px 5px white)';
-    left.style.filter = 'drop-shadow(0px 0px 5px white)';
+    right.style.filter = 'drop-shadow(0px 0px 5px purple)';
+    left.style.filter = 'drop-shadow(0px 0px 5px purple)';
   }
 });
 
@@ -50,8 +49,8 @@ right.addEventListener('click', () => {
     right.style.filter = 'none';
     left.style.filter = 'none';
   } else {
-    right.style.filter = 'drop-shadow(0px 0px 5px white)';
-    left.style.filter = 'drop-shadow(0px 0px 5px white)';
+    right.style.filter = 'drop-shadow(0px 0px 5px purple)';
+    left.style.filter = 'drop-shadow(0px 0px 5px purple)';
   }
 });
 
@@ -134,6 +133,7 @@ let checkImage = (img) => {
     bottomDisplayControl('nine', 'one');
     imageAnimation(img, imgContainer, './assets/todolist.gif', 'todolist');
   }
+  btnstatus = true;
 };
 let count = 1;
 let imgContainer = document.querySelector('.image-container');
@@ -153,10 +153,54 @@ function start() {
 document
   .querySelector('.arrow-right-container')
   .addEventListener('click', () => {
+    pressed(), 500;
+    if ((btnstatus = true)) {
+      let imgContainer = document.querySelector('.image-container');
+      let img = document.querySelector('img');
+
+      checkImage(img);
+    }
+  });
+
+document
+  .querySelector('.arrow-left-container')
+  .addEventListener('click', () => {
     pressed();
     let imgContainer = document.querySelector('.image-container');
     let img = document.querySelector('img');
-    checkImage(img);
+    checkBackWardsImage(img);
   });
 
 start();
+
+checkBackWardsImage = (img) => {
+  if (img.classList.contains('todolist')) {
+    bottomDisplayControl('one', 'nine');
+    imageAnimation(img, imgContainer, './assets/landing-page.gif', 'landing');
+    // imageAnimation(img, imgContainer, './assets/tictactoe.gif', 'tictactoe');
+  } else if (img.classList.contains('landing')) {
+    bottomDisplayControl('nine', 'eight');
+    imageAnimation(img, imgContainer, './assets/calculator.gif', 'calculator');
+  } else if (img.classList.contains('calculator')) {
+    bottomDisplayControl('eight', 'seven');
+    imageAnimation(img, imgContainer, './assets/dashboard.gif', 'dashboard');
+  } else if (img.classList.contains('dashboard')) {
+    bottomDisplayControl('seven', 'six');
+    imageAnimation(img, imgContainer, './assets/Library.gif', 'library');
+  } else if (img.classList.contains('library')) {
+    bottomDisplayControl('six', 'five');
+    imageAnimation(img, imgContainer, './assets/sign-up.gif', 'sign');
+  } else if (img.classList.contains('sign')) {
+    bottomDisplayControl('five', 'four');
+    imageAnimation(img, imgContainer, './assets/restaurant.gif', 'restaurant');
+  } else if (img.classList.contains('restaurant')) {
+    bottomDisplayControl('four', 'three');
+    imageAnimation(img, imgContainer, './assets/sketch.gif', 'sketch');
+  } else if (img.classList.contains('sketch')) {
+    bottomDisplayControl('three', 'two');
+    imageAnimation(img, imgContainer, './assets/tictactoe.gif', 'tictactoe');
+  } else if (img.classList.contains('tictactoe')) {
+    bottomDisplayControl('two', 'one');
+    imageAnimation(img, imgContainer, './assets/todolist.gif', 'todolist');
+  }
+};
