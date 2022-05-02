@@ -51,7 +51,7 @@ body {
 .right-arrow-onhover {
   width: 60%;
   height: 60%;
-  transition: all 500ms;
+  transition: all 700ms;
   transition-timing-function: cubic-bezier(0.17, 0.67, 0.64, 1.59);
   opacity: 1;
   cursor: pointer;
@@ -110,4 +110,16 @@ body {
   height: 100%;
   width: 100%;
   grid-area: 1 / 1 / 2 / 2;
+  opacity: 1;
+  transition: all 500ms ease-in-out;
+  transform: translateX(-150%);
+}
+
+.slideCenter {
+  transform: translateX(0);
+}
+
+.slideRight {
+  transform: translateX(150%);
+  /* transform: opacity(0); */
 }
